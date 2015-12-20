@@ -24,6 +24,7 @@
     <string name="btn_create_account">Create Account</string>
     <string name="error_passwords_dont_match">Passwords do not match</string>
     <string name="wait_account_creation">creating account. please wait...</string>
+    <string name="create_an_account">Create an Account</string>
 
 
 </resources>

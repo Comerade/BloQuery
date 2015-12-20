@@ -24,6 +24,7 @@
         </activity>
         <activity
             android:name=".ui.activities.SignUpActivity"
+            android:label="@string/create_an_account"
             android:parentActivityName=".ui.activities.LoginActivity">
         </activity>
     </application>
