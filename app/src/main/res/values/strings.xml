@@ -23,9 +23,10 @@
     <string name="login_password_confirm_hint">confirm password</string>
     <string name="btn_create_account">Create Account</string>
     <string name="error_passwords_dont_match">Passwords do not match</string>
-    <string name="wait_account_creation">creating account. please wait...</string>
+    <string name="wait_account_creation">creating account. please wait&#8230;</string>
     <string name="create_an_account">Create an Account</string>
-    <string name="wait_for_answers">grabbing question and answers...</string>
+    <string name="wait_for_answers">grabbing question and answers&#8230;</string>
+    <string name="user_asks">" asks&#8230;"</string>
 
 
 </resources>

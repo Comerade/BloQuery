@@ -36,6 +36,9 @@ public class SingleQuestionActivity extends AppCompatActivity {
                 public void done(Question object, ParseException e) {
                     if (null == e) {
                         progressDialog.dismiss();
+
+                        SingleQuestionActivity.this.setTitle(object.getUserWhoAsked() + getString(R.string.user_asks));
+
                         mQuestionText.setText(object.getQuestionText());
                     } else {
                         progressDialog.dismiss();
