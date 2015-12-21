@@ -27,6 +27,10 @@
             android:label="@string/create_an_account"
             android:parentActivityName=".ui.activities.LoginActivity">
         </activity>
+        <activity android:name=".ui.activities.QuestionsActivity">
+        </activity>
+        <activity android:name=".ui.activities.SingleQuestionActivity">
+        </activity>
     </application>
 
 </manifest>

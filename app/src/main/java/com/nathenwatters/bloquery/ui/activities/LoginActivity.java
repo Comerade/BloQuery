@@ -100,8 +100,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     } else {
                         Toast.makeText(LoginActivity.this, R.string.attn_login_success, Toast.LENGTH_SHORT).show();
 
-                        // TODO: launch QuestionsActivity
-                        // ...
+                        Intent intent = new Intent(LoginActivity.this, QuestionsActivity.class);
+                        startActivity(intent);
 
                         progressDialog.dismiss();
                         LoginActivity.this.finish();
