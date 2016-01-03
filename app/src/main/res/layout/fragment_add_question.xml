@@ -6,16 +6,17 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_add_answer_title"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"/>
-
-    <EditText
-        android:id="@+id/et_answer_text"
-        android:inputType="textMultiLine|textAutoCorrect|textAutoComplete"
+        android:id="@+id/tv_add_question_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_add_answer">
+        android:text="@string/add_new_question"/>
+
+    <EditText
+        android:id="@+id/et_add_question_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine|textAutoComplete|textAutoCorrect"
+        android:hint="@string/hint_add_question">
 
         <requestFocus/>
 

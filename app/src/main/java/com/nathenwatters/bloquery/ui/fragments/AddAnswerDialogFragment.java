@@ -64,7 +64,7 @@ public class AddAnswerDialogFragment extends DialogFragment {
                        });
                    }
                })
-               .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+               .setNegativeButton(getString(R.string.cancel_dialog_fragment), new DialogInterface.OnClickListener() {
                    @Override
                    public void onClick(DialogInterface dialog, int which) {
                         AddAnswerDialogFragment.this.getDialog().cancel();
