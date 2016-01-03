@@ -1,7 +1,6 @@
 package com.nathenwatters.bloquery.ui.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
@@ -16,7 +15,7 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionsActivity extends AppCompatActivity {
+public class QuestionsActivity extends BaseActivity {
 
     private RecyclerView mRecyclerView;
     private QuestionsAdapter mQuestionsAdapter;

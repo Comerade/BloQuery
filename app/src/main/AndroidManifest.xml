@@ -33,6 +33,8 @@
             android:name=".ui.activities.SingleQuestionActivity"
             android:parentActivityName=".ui.activities.QuestionsActivity">
         </activity>
+        <activity android:name=".ui.activities.BaseActivity">
+        </activity>
     </application>
 
 </manifest>

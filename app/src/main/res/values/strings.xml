@@ -27,6 +27,12 @@
     <string name="create_an_account">Create an Account</string>
     <string name="wait_for_answers">grabbing question and answers&#8230;</string>
     <string name="user_asks">" asks&#8230;"</string>
+    <string name="logout">logout</string>
+    <string name="logging_out">logging out...</string>
+    <string name="add_answer">Add Answer</string>
+    <string name="hint_add_answer">enter your answer here</string>
+    <string name="btn_submit_answer">Submit Answer</string>
+    <string name="saving_answer">Saving answer</string>
 
 
 </resources>
