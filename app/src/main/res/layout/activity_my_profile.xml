@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="8dp"
+    tools:context="com.nathenwatters.bloquery.ui.activities.MyProfileActivity">
+
+    <RelativeLayout
+        android:id="@+id/rel_image_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <com.parse.ParseImageView
+            android:id="@+id/iv_profile_pic"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:contentDescription="@string/image_view_profile_pic"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:src="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:id="@+id/ll_img_content_container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_profile_pic"
+            android:layout_toEndOf="@+id/iv_profile_pic">
+
+            <TextView
+                android:id="@+id/tv_profile_pic_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_picture"
+                android:textSize="16sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_profile_pic_filename"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btn_change_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/change_profile_pic"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="loadPhoto"/>
+
+            <Button
+                android:id="@+id/btn_take_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_take_photo"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="takePhoto"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/horizontal_rule"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/rel_image_container"
+        android:layout_marginTop="8dp"
+        android:background="#000000" />
+
+    <EditText
+        android:id="@+id/et_profile_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine|textAutoCorrect"
+        android:minLines="6"
+        android:gravity="top"
+        android:layout_below="@id/horizontal_rule"
+        android:hint="@string/hint_profile_description"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginEnd="32dp">
+
+        <Button
+            android:id="@+id/btn_save_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_save"
+            android:onClick="updateProfile"/>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_cancel"
+            android:onClick="cancelProfileEditor"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

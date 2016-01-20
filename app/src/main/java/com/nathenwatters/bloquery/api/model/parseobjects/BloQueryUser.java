@@ -1,16 +1,17 @@
 package com.nathenwatters.bloquery.api.model.parseobjects;
 
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
 
 /**
  * Custom ParseUser object extended to support a profile
  * image URL as well as a profile description.
  */
-@ParseClassName("_BloQueryUser")
+@ParseClassName("_User")
 public class BloQueryUser extends ParseUser {
 
-    public static final String USER_IMAGE_URL = "img_url";
+    public static final String USER_IMAGE = "img";
     public static final String USER_DESCRIPTION = "description";
 
     /**
@@ -18,20 +19,12 @@ public class BloQueryUser extends ParseUser {
      */
     public BloQueryUser() {}
 
-    /**
-     * Setter for URL of the user's profile image
-     * @param url
-     */
-    public void setImageURL(String url) {
-        put(USER_IMAGE_URL, url);
+    public ParseFile getPhotoFile() {
+        return getParseFile(USER_IMAGE);
     }
 
-    /**
-     * Getter for the URL of the user's profile image
-     * @return
-     */
-    public String getImageURL() {
-        return getString(USER_IMAGE_URL);
+    public void setPhotoFile(ParseFile parseFile) {
+        put(USER_IMAGE, parseFile);
     }
 
     /**

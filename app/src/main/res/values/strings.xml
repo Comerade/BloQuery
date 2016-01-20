@@ -39,6 +39,21 @@
     <string name="submit_question">Submit Question</string>
     <string name="creating_question">creating question#8230;</string>
     <string name="new_question">New ?</string>
+    <string name="menu_item_myprofile">My Profile</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="image_view_profile_pic">photo used for profile</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="change_profile_pic">Change Photo</string>
+    <string name="hint_profile_description">enter a description for your profile here</string>
+    <string name="profile_view_title">\'s Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="change_photo">change photo dialog</string>
+    <string name="btn_load_photo_from_device">Load from Device</string>
+    <string name="btn_take_new_photo">Take new Photo</string>
+    <string name="btn_take_photo">Take Photo</string>
 
 
 </resources>

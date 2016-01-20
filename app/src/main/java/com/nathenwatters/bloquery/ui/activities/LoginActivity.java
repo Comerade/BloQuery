@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.nathenwatters.bloquery.BloQueryApplication;
 import com.nathenwatters.bloquery.R;
+import com.nathenwatters.bloquery.api.model.parseobjects.BloQueryUser;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -38,6 +39,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button mBtnLogin;
     private Button mBtnSignup;
     private TextView mTvForgotPassword;
+
+    private static BloQueryUser mBloQueryUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    public static BloQueryUser getBloQueryUser() {
+        return mBloQueryUser;
+    }
+
     /**
      * Attempt to login with the Parse SDK
      */
@@ -99,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         ParseUser.logOut();
                     } else {
                         Toast.makeText(LoginActivity.this, R.string.attn_login_success, Toast.LENGTH_SHORT).show();
-
+                        mBloQueryUser = (BloQueryUser) user;
                         Intent intent = new Intent(LoginActivity.this, QuestionsActivity.class);
                         startActivity(intent);
 
