@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-    android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
     android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-    android:paddingRight="?android:attr/listPreferredItemPaddingRight"
     android:minHeight="?android:attr/listPreferredItemHeightSmall"
     card_view:cardUseCompatPadding="true"
     card_view:cardElevation="1dp"
@@ -25,16 +23,32 @@
             android:id="@+id/tv_question_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
 
-        <TextView
-            android:id="@+id/tv_question_username"
+        <LinearLayout
+            android:id="@+id/ll_question_user"
+            android:clickable="true"
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/tv_question_text"/>
+            android:layout_below="@+id/tv_question_text"
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:id="@+id/tv_question_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
+
+            <com.parse.ParseImageView
+                android:id="@+id/iv_image_preview"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@mipmap/ic_launcher"/>
+
+        </LinearLayout>
+
+
 
     </RelativeLayout>
 

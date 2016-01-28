@@ -8,7 +8,7 @@
     android:layout_marginRight="16dp"
     android:layout_marginTop="16dp"
     android:layout_marginBottom="8dp"
-    tools:context="com.nathenwatters.bloquery.ui.activities.MyProfileActivity">
+    tools:context=".ui.activities.ProfileActivity">
 
     <RelativeLayout
         android:id="@+id/rel_image_container"

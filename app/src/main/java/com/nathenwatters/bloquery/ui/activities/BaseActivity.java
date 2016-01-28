@@ -56,7 +56,7 @@ public class BaseActivity extends AppCompatActivity {
                 break;
             }
             case R.id.menu_item_myprofile: {
-                Intent intent = new Intent(BaseActivity.this, MyProfileActivity.class);
+                Intent intent = new Intent(BaseActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
         }

@@ -17,34 +17,61 @@ import android.widget.Toast;
 
 import com.nathenwatters.bloquery.R;
 import com.nathenwatters.bloquery.api.model.parseobjects.BloQueryUser;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 
-public class MyProfileActivity extends BaseActivity {
+public class ProfileActivity extends BaseActivity {
 
     private TextView mTvProfilePicFilename;
     private EditText mEtProfileDesc;
+
+    private TextView mTvUserProfileDescription;
 
     private ParseImageView mImageView;
 
     private static final int RESULT_LOAD_IMAGE = 1;
     private static final int REQUEST_IMAGE_CAPTURE = 2;
 
-    private static String filepath = "";
+    public static final String USER = "user";
+    private boolean isCurrentUser = false;
+
+    private String mUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_profile);
-        setTitle(ParseUser.getCurrentUser().getUsername() + getString(R.string.profile_view_title));
+
+        Intent intent = getIntent();
+        String username = null;
+
+        if (intent != null) {
+            username = intent.getStringExtra(USER);
+        }
+
+        if (username != null && !username.isEmpty()) {
+            setContentView(R.layout.user_profile);
+            isCurrentUser = false;
+            mUsername = username;
+            setTitle(username + "'s Profile");
+            mTvUserProfileDescription = (TextView) findViewById(R.id.tv_profile_description);
+
+        } else {
+            setContentView(R.layout.activity_my_profile);
+            isCurrentUser = true;
+            setTitle(ParseUser.getCurrentUser().getUsername() + "'s Profile");
+            mTvProfilePicFilename = (TextView) findViewById(R.id.tv_profile_pic_filename);
+            mEtProfileDesc = (EditText) findViewById(R.id.et_profile_description);
+        }
+
         mImageView = (ParseImageView) findViewById(R.id.iv_profile_pic);
-        mTvProfilePicFilename = (TextView) findViewById(R.id.tv_profile_pic_filename);
-        mEtProfileDesc = (EditText) findViewById(R.id.et_profile_description);
+
     }
 
     /**
@@ -74,16 +101,45 @@ public class MyProfileActivity extends BaseActivity {
     public void onResume() {
         super.onResume();
 
-        ParseFile parseFile = LoginActivity.getBloQueryUser().getPhotoFile();
+        if (isCurrentUser) {
+            ParseFile parseFile = LoginActivity.getBloQueryUser().getPhotoFile();
 
-        if (parseFile != null) {
-            mImageView.setParseFile(parseFile);
-            mImageView.loadInBackground();
-        }
+            if (parseFile != null) {
+                mImageView.setParseFile(parseFile);
+                mImageView.loadInBackground();
+            }
 
-        String description = LoginActivity.getBloQueryUser().getDescription();
-        if (description != null && !description.isEmpty()){
-            mEtProfileDesc.setText(description);
+            String description = LoginActivity.getBloQueryUser().getDescription();
+            if (description != null && !description.isEmpty()){
+                mEtProfileDesc.setText(description);
+            }
+        } else {
+            ParseQuery<ParseUser> query = ParseUser.getQuery();
+            query.whereEqualTo("username", mUsername);
+            query.getFirstInBackground(new GetCallback<ParseUser>() {
+                @Override
+                public void done(ParseUser object, ParseException e) {
+                    if (e == null) {
+
+                        BloQueryUser user = (BloQueryUser) object;
+                        ParseFile file = user.getPhotoFile();
+                        if (file != null) {
+                            mImageView.setParseFile(file);
+                            mImageView.loadInBackground();
+                        }
+
+                        String description = user.getDescription();
+                        if (description != null && !description.isEmpty()) {
+                            mTvUserProfileDescription.setText(user.getDescription());
+                        } else {
+                            mTvUserProfileDescription.setText(R.string.no_user_description);
+                        }
+
+                    } else {
+                        Toast.makeText(ProfileActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
         }
     }
 
@@ -115,7 +171,7 @@ public class MyProfileActivity extends BaseActivity {
                 if (cursor != null) {
                     cursor.moveToFirst();
                     int columnIndex = cursor.getColumnIndex(filepathColumn[0]);
-                    filepath = cursor.getString(columnIndex);
+                    String filepath = cursor.getString(columnIndex);
                     cursor.close();
                     mBitmap = BitmapFactory.decodeFile(filepath);
                     mImageView.setImageBitmap(mBitmap);
@@ -167,7 +223,7 @@ public class MyProfileActivity extends BaseActivity {
                 if (e == null) {
 
                 } else {
-                    Toast.makeText(MyProfileActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProfileActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
